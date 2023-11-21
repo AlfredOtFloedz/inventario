@@ -1,0 +1,64 @@
+{% load crispy_forms_tags %}
+
+<div class="container">
+
+    <div>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                {% if messages %}
+                    <div class="alert alert-success" role="alert">
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                <div class="card">
+                    <div class="card-header">
+                        Realizar Orden
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form | crispy}}
+                            <input class="btn btn-info btn-block" type="submit" value="Añadir Pedido">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        Registro de Pedidos
+                    </div>
+                    <div class="card-body">
+                        <table class="table bg-white">
+                            <thead class="bg-info text-white">
+                                <tr>
+                                    <th scope="col">Código</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Categoría</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Cliente</th>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %} 
+                                {% if order.staff == user %}
+                                <tr>
+                                    <th scope="col">{{ order.product.code }}</th>
+                                    <td>{{ order.product.name }}</td>
+                                    <td>{{ order.product.category }}</td>
+                                    <td>{{ order.order_quantity }}</td>
+                                    <td>{{ order.customer }}</td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

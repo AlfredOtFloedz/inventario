@@ -1,0 +1,62 @@
+<!--Topside-->
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Información
+                </div>
+                <div class="card-body">
+                    <!-- <marquee behavior="" direction=""> -->
+                    <h3 class="my-4"> Equipos vendidos: {{ total_order_quantity }} </h3>
+                    <h3 class="my-4"> Equipos en bodega: {{ total_quantity }} </h3>
+                  <!--  </marquee> --> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    Estadísticas
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard-staff' %}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Staff<i class="fas fa-users"></i></h4>
+                                    <h3>{{ workers_count }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard-producto' %}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Productos<i class="fas fa-box"></i></h4>
+                                    <h3>{{ total_quantity }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard-order' %}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Pedidos<i class="fas fa-shipping-fast"></i></h4>
+                                    <h3>{{ orders_count }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a class="text-decoration-none text-dark" href="{% url 'dashboard-precio' %}">
+                                <div class="card my-card shadow text-center p-3">
+                                    <h4>Registros<i class="fas fa-shipping-fast"></i></h4>
+                                    <h3>{{ items_count }}</h3>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Topside-->
